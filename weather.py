@@ -24,8 +24,10 @@ def convert_date(iso_string):
     Returns:
         A date formatted like: Weekday Date Month Year e.g. Tuesday 06 July 2021
     """
-    pass
-
+    
+    date_object = datetime.strptime(iso_string, "%Y-%m-%d")
+    readable_date = f"{date_object: %A %d %B %Y}"
+    return readable_date
 
 def convert_f_to_c(temp_in_fahrenheit):
     """Converts a temperature from Fahrenheit to Celcius.
@@ -35,7 +37,8 @@ def convert_f_to_c(temp_in_fahrenheit):
     Returns:
         A float representing a temperature in degrees Celcius, rounded to 1 decimal place.
     """
-    pass
+    celcius_temp = (temp_in_fahrenheit - 32) * 5/9
+    return f"The temperature is {round (celcius_temp, 1)} °C"
 
 
 def calculate_mean(weather_data):
@@ -46,7 +49,13 @@ def calculate_mean(weather_data):
     Returns:
         A float representing the mean value.
     """
-    pass
+    if not weather_data:
+        return 0.0
+    
+    total_sum = sum(weather_data)
+    count = len(weather_data)
+    mean_value = total_sum / count
+    return float(mean_value)
 
 
 def load_data_from_csv(csv_file):
@@ -57,7 +66,13 @@ def load_data_from_csv(csv_file):
     Returns:
         A list of lists, where each sublist is a (non-empty) line in the csv file.
     """
-    pass
+    data = []
+    # csv_file = "tests/data/example_one.csv"
+    with open(csv_file, mode="r", newline='', encoding="utf-8") as file:
+        reader = csv.reader(file)
+        for row in reader:
+            data.append(row)
+            return data
 
 
 def find_min(weather_data):
@@ -66,9 +81,17 @@ def find_min(weather_data):
     Args:
         weather_data: A list of numbers.
     Returns:
-        The minimum value and it's position in the list. (In case of multiple matches, return the index of the *last* example in the list.)
+        The minimum value and it's position in the list. 
+        (In case of multiple matches, return the index of the *last* example in the list.)
     """
-    pass
+    if not weather_data:
+        return (None, None)
+    min_value = min(weather_data)
+    last_index = None
+    for i in range(len(weather_data)):
+        if weather_data[i] == min_value:
+            last_index = i
+    return (min_value, last_index)
 
 
 def find_max(weather_data):
@@ -77,9 +100,18 @@ def find_max(weather_data):
     Args:
         weather_data: A list of numbers.
     Returns:
-        The maximum value and it's position in the list. (In case of multiple matches, return the index of the *last* example in the list.)
+        The maximum value and it's position in the list. 
+        (In case of multiple matches, return the index of the *last* example in the list.)
     """
-    pass
+    
+    if not weather_data:
+        return (None, None)
+    max_value = max(weather_data)
+    last_index = None
+    for i in range(len(weather_data)):
+        if weather_data[i] == max_value:
+            last_index = i
+    return (max_value, last_index)
 
 
 def generate_summary(weather_data):
@@ -102,3 +134,5 @@ def generate_daily_summary(weather_data):
         A string containing the summary information.
     """
     pass
+
+
