@@ -19,10 +19,18 @@
 # # csv_file = "tests/data/example_one.csv"
 # print(load_data_from_csv)
 
-from weather import find_min
-temperatures = [25, 22, 28, 20, 24, 20, 26]
-min_temp, min_index = find_min(temperatures)
+# from weather import find_min
+# temperatures = [25, 22, 28, 20, 24, 20, 26]
+# min_temp, min_index = find_min(temperatures)
 
-print(f"Data: {temperatures}")
-print(f"Minimum Value: {min_temp}")
-print(f"Last Position (Index): {min_index}")
+# print(f"Data: {temperatures}")
+# print(f"Minimum Value: {min_temp}")
+# print(f"Last Position (Index): {min_index}")
+
+# from weather import find_max
+# temperatures = [25, 22, 28, 20, 24, 20, 26]
+# max_temp, max_index = find_max(temperatures)
+
+# print(f"Data: {temperatures}")
+# print(f"Maximum Value: {max_temp}")
+# print(f"Last Position (Index): {max_index}")
